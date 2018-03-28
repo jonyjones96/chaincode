@@ -55,6 +55,7 @@ type DataBlock struct {
  * Best practice is to have any Ledger initialization in separate function -- see initLedger()
  */
 func (s *SmartContract) Init(APIstub shim.ChaincodeStubInterface) sc.Response {
+
 	return shim.Success(nil)
 }
 
@@ -88,6 +89,8 @@ func (s *SmartContract) queryBlock(APIstub shim.ChaincodeStubInterface, args []s
 	}
 
 	blockAsBytes, _ := APIstub.GetState(args[0])
+	//messageAsBytes := []byte("args[0] = " + args[0])
+	//return shim.Success(messageAsBytes)
 	return shim.Success(blockAsBytes)
 }
 
